@@ -26,6 +26,9 @@ public class AuthController {
 	@Autowired
 	private UserService userService;
 
+	/**
+	 * load login page
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loadLoginPage(Model model, HttpSession httpSession) {
 		log.info("Entering loadLoginPage() method");

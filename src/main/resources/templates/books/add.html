@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<section>
+		<!-- main content -->
+		<main class="mt-1 p-2">
+			<div class="container">
+
+				<nav class="mt-1 mb-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/">Home</a></li>
+						<li class="breadcrumb-item"><a href="/books">Books</a></li>
+						<li class="breadcrumb-item">Add</li>
+					</ol>
+				</nav>
+
+				<div class="row">
+					<div th:if="${msg}" class="col-md-6 mb-3 alert alert-danger" style="margin-left:10px;">
+						<span th:text="${msg}"></span>
+					</div>
+				</div>
+				
+				<form th:action="@{/books/add}" th:object="${book}" method="post">
+					<div class="row mt-2">
+						<div class="col-md-4">
+							<label for="title" class="form-label">Book Title</label>
+							<input class="form-control" type="text" id="title" th:field="*{title}" required/>
+						</div>
+						<div class="col-md-4">
+							<label for="description" class="form-label">Book Description</label>
+							<input class="form-control" type="text" id="description" th:field="*{description}" required/>
+						</div>
+
+						<div class="col-md-4">
+							<label for="authors" class="form-label">Authors</label>
+							<input class="form-control" type="text" id="authors" th:field="*{authors}" required/>
+						</div>
+					</div>
+
+					<div class="row mt-2">
+						<div class="col-md-4">
+							<label for="image" class="form-label">Book Image Url</label>
+							<input class="form-control" type="text" id="image" th:field="*{image}" required/>
+						</div>
+
+						<div class="col-md-4">
+							<label for="categories" class="form-label">Category</label>
+							<input class="form-control" type="text" id="categories" th:field="*{categories}" required/>
+						</div>
+
+						<div class="col-md-4">
+							<label for="previewLink" class="form-label">Preview Link</label>
+							<input class="form-control" type="text" id="previewLink" th:field="*{previewLink}" required/>
+						</div>
+					</div>
+
+					<div class="row mt-2">
+						<div class="col-md-4">
+							<label for="infoLink" class="form-label">Info Link</label>
+							<input class="form-control" type="text" id="infoLink" th:field="*{infoLink}" required/>
+						</div>
+
+						<div class="col-md-4">
+							<label for="ratingsCount" class="form-label">Rating Count</label>
+							<input class="form-control" type="text" id="ratingsCount" th:field="*{ratingsCount}" placeholder="Enter number" pattern="[0-9]+([,.][0-9]+)?" required/>
+						</div>
+
+						<div class="col-md-4">
+							<label for="publishedDate" class="form-label">Published Date</label>
+							<input class="form-control" type="date" id="publishedDate" th:field="*{publishedDate}" required/>
+						</div>
+					</div>
+
+					<div class="row mt-2">
+						<div class="col-md-5 mt-4">
+							<a href="/books" class="btn btn-warning" style="margin-right: 15px;"> Back</a>
+							<button type="submit" class="btn btn-success"> ADD </button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+
+		</main>
+		<!-- main content end-->
+	</section>
+
+</body>
+
+</html>
